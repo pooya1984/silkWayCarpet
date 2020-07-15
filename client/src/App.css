@@ -89,46 +89,16 @@ body {
   font-weight: normal;
 }
 
-/* todolist's Posts */
-.post {
+/* products */
+.item-box {
   position: relative;
-  top: 100px;
-  padding: 20px;
-  margin-top: 10px;
-  width: 90%;
+  display: flex;
+  width: 600px;
+  margin: 10px;
+  padding: 10px;
 
-  background-color: rgba(255, 255, 255, 0.4);
-  border: 1px solid whitesmoke;
-  border-radius: 10px;
-}
-
-.todoInput {
-  position: relative;
-  width: 300px;
-  height: 60px;
-  left: 50px;
-  margin-bottom: 50px;
-
-  background-color: rgba(255, 255, 255, 0.4);
-  border: 3px solid whitesmoke;
-  border-radius: 10px;
-
-  text-align: center;
-}
-.todoSubmit {
-  position: relative;
-  width: 65px;
-  height: 60px;
-  right: 34px;
-  margin-left: 20px;
-  margin-bottom: 50px;
-
-  background-color: rgb(94, 241, 9);
-  border: 3px solid whitesmoke;
-  border-radius: 10px;
-
-  text-align: center;
   color: white;
 
-  z-index: 10;
+  background: rgb(175, 175, 175);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }

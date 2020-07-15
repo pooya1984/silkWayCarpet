@@ -2,11 +2,35 @@ import React, { Fragment as div } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-const ProductsItem = ({ product: { _id, img, size, collections } }) => {
+const ProductsItem = ({
+  product: {
+    _id,
+    img,
+    size,
+    collections,
+    product,
+    width,
+    heigh,
+    raj,
+    madeYear,
+    handmade,
+    quantity,
+  },
+}) => {
   return (
-    <div className="loging-box">
-      {/* <img src={img} /> */}
-      <p>{size}</p>
+    <div className="item-box">
+      <img src={`${img[0]}`} style={{ width: "300px", margin: "10px" }} />
+      <div className="flex-column">
+        <h3>{product}</h3>
+        <p>{collections}</p>
+        <p>
+          {width}x{heigh}
+        </p>
+        <p>{raj}</p>
+        <p>in Stock: {quantity}</p>
+        <p>Year of Product: {madeYear}</p>
+        {handmade === true ? <p>Handmade</p> : ""}
+      </div>
       {/* <p>{collections}</p> */}
     </div>
   );

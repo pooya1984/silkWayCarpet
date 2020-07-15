@@ -18,7 +18,7 @@ const Products = ({ getProducts, product: { products, loading } }) => {
     <Fragment>
       <Navbar />
 
-      <div className="posts">
+      <div className="d-flex flex-wrap">
         {products.map((product) => (
           <ProductsItem key={product._id} product={product} />
         ))}
