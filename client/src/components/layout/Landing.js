@@ -1,18 +1,23 @@
-import React from "react";
-import { Redirect } from "react-router-dom";
+import React, { Fragment, useEffect } from "react";
+import PropTypes from "prop-types";
 import Navbar from "../header/Navbar";
 import Footer from "../header/Footer";
+import Spinner from "./Spinner";
+import { connect } from "react-redux";
+import Login from "../auth/Login";
 
-const Landing = ({ isAuthenticated }) => {
-  if (isAuthenticated) {
-    return <Redirect to="/dashboard" />;
-  }
+const Landing = () => {
   return (
-    <section className="landing">
+    <Fragment>
       <Navbar />
-      <p>Hello</p>
+      {/* <div>
+            {products.map((product) => {
+              <Products key={product._id} product={product} />;
+            })}
+          </div> */}
+      <Login />
       <Footer />
-    </section>
+    </Fragment>
   );
 };
 

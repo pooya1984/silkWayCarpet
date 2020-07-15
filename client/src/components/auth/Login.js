@@ -3,8 +3,6 @@ import { Redirect, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { login } from "../../actions/auth";
-import Navbar from "../header/Navbar";
-import Footer from "../header/Footer";
 
 const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -24,13 +22,11 @@ const Login = ({ login, isAuthenticated }) => {
 
   //Redirect if logged in
   if (isAuthenticated) {
-    return <Redirect to="/" />;
+    return <Redirect to="/products" />;
   }
 
   return (
     <Fragment>
-      <Navbar />
-
       <div className="loging-box">
         <form onSubmit={(e) => onSubmit(e)}>
           <p>enter your Email</p>
@@ -63,7 +59,6 @@ const Login = ({ login, isAuthenticated }) => {
           </p>
         </form>
       </div>
-      <Footer />
     </Fragment>
   );
 };

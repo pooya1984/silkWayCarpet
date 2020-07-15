@@ -6,7 +6,7 @@ const Footer = () => {
     // <!-- Footer -->
     <Fragment>
       <footer
-        className="page-footer font-small "
+        className="page-footer font-small sticky-bottom "
         style={{ backgroundColor: "black", color: "white" }}
       >
         <div className="container text-center text-md-left">
