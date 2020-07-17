@@ -60,4 +60,25 @@ router.get("/", auth, async (req, res) => {
   }
 });
 
+// @route    GET api/product/:id
+// @desc     Get product by ID
+// @access   Private
+router.get("/:id", auth, async (req, res) => {
+  try {
+    const product = await Products.findById(req.params.id);
+
+    if (!product) {
+      return res.status(404).json({ msg: "Post not found" });
+    }
+
+    res.json(product);
+  } catch (err) {
+    console.error(err.message);
+    if (err.kind === "ObjectId") {
+      return res.status(404).json({ msg: "Post not found" });
+    }
+    res.status(500).send("Server Error");
+  }
+});
+
 module.exports = router;
