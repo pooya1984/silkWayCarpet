@@ -1,7 +1,10 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { logout } from "../../actions/auth";
+import PropTypes from "prop-types";
 
-const Footer = () => {
+const Footer = ({ isAuthenticated, logout }) => {
   return (
     // <!-- Footer -->
     <Fragment>
@@ -64,46 +67,54 @@ const Footer = () => {
 
         {/* <!-- Call to action --> */}
         <ul className="list-unstyled list-inline text-center py-2">
-          <li className="list-inline-item">
-            <h5 className="mb-1">Register for free</h5>
-          </li>
-          <li className="list-inline-item">
-            <Link
-              href="#!"
-              className="btn btn-danger btn-rounded"
-              to={"/Register"}
-            >
-              Sign up!
-            </Link>
-          </li>
+          {!isAuthenticated ? (
+            <Fragment>
+              <li className="list-inline-item">
+                <h5 className="mb-1">Register for free</h5>
+              </li>
+              <li className="list-inline-item">
+                <Link className="btn btn-danger btn-rounded" to={"/Register"}>
+                  Sign up!
+                </Link>
+              </li>
+            </Fragment>
+          ) : (
+            <Fragment>
+              <li className="list-inline-item">
+                <div className="btn btn-danger btn-rounded" onClick={logout}>
+                  Log Out
+                </div>
+              </li>
+            </Fragment>
+          )}
         </ul>
 
         {/* <!-- Social buttons --> */}
         <ul className="list-unstyled list-inline text-center">
           <li className="list-inline-item">
-            <Link className="btn-floating btn-fb mx-1">
+            <div className="btn-floating btn-fb mx-1">
               <i className="fab fa-facebook-f"> </i>
-            </Link>
+            </div>
           </li>
           <li className="list-inline-item">
-            <Link className="btn-floating btn-tw mx-1">
+            <div className="btn-floating btn-tw mx-1">
               <i className="fab fa-twitter"> </i>
-            </Link>
+            </div>
           </li>
           <li className="list-inline-item">
-            <Link className="btn-floating btn-gplus mx-1">
+            <div className="btn-floating btn-gplus mx-1">
               <i className="fab fa-google-plus-g"> </i>
-            </Link>
+            </div>
           </li>
           <li className="list-inline-item">
-            <Link className="btn-floating btn-li mx-1">
+            <div className="btn-floating btn-li mx-1">
               <i className="fab fa-linkedin-in"> </i>
-            </Link>
+            </div>
           </li>
           <li className="list-inline-item">
-            <Link className="btn-floating btn-dribbble mx-1">
+            <div className="btn-floating btn-dribbble mx-1">
               <i className="fab fa-dribbble"> </i>
-            </Link>
+            </div>
           </li>
         </ul>
         {/* <!-- Social buttons --> */}
@@ -116,4 +127,14 @@ const Footer = () => {
     </Fragment>
   );
 };
-export default Footer;
+
+Footer.propTypes = {
+  isAuthenticated: PropTypes.bool,
+  logout: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { logout })(Footer);

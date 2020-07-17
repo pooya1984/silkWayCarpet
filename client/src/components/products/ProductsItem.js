@@ -19,7 +19,7 @@ const ProductsItem = ({
   },
 }) => {
   return (
-    <div className="item-box">
+    <div className="items-box">
       <img
         src={`${img[0]}`}
         alt={product}
@@ -53,11 +53,6 @@ const ProductsItem = ({
 
 ProductsItem.propTypes = {
   product: PropTypes.object.isRequired,
-  auth: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  auth: state.auth,
-});
-
-export default connect(mapStateToProps)(ProductsItem);
+export default ProductsItem;

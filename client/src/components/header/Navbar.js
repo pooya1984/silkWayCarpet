@@ -51,7 +51,7 @@ const Navbar = ({ isAuthenticated, user }) => {
             )}
             <li className="nav-item">
               {!isAuthenticated ? (
-                <Link className="nav-link text-light m-4" to={"/Login"}>
+                <Link className="nav-link text-light m-4" to={"/"}>
                   <small> sign In</small>
                 </Link>
               ) : (

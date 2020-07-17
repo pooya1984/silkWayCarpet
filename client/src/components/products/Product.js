@@ -5,12 +5,14 @@ import Footer from "../header/Footer";
 import Spinner from "../layout/Spinner";
 import { connect } from "react-redux";
 import { getProduct } from "../../actions/products";
-import ProductsItem from "./ProductsItem";
+import ProductImg from "./ProductImg";
 
 const Products = ({ getProduct, product: { product, loading }, match }) => {
   useEffect(() => {
     getProduct(match.params.id);
   }, [getProduct, match.params.id]);
+
+  console.log(product);
 
   return loading ? (
     <Spinner />
@@ -18,11 +20,10 @@ const Products = ({ getProduct, product: { product, loading }, match }) => {
     <Fragment>
       <Navbar />
       <div className="item-box">
-        {/* <img
-        src={`${img[0]}`}
-        alt={product}
-        style={{ width: "300px", margin: "10px" }}
-      /> */}
+        {/* {product.map((Img) => (
+          <ProductImg key={Img._id} Img={Img} />
+        ))} */}
+
         <div className="flex-column">
           <h3>{product && product.product}</h3>
           <p>{product && product.collections}</p>
