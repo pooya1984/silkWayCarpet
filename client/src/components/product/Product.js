@@ -5,7 +5,7 @@ import Footer from "../header/Footer";
 import Spinner from "../layout/Spinner";
 import { connect } from "react-redux";
 import { getProduct } from "../../actions/products";
-import ProductImg from "./ProductImg";
+import ProductsImg from "../products/ProductsImg";
 
 const Products = ({ getProduct, product: { product, loading }, match }) => {
   useEffect(() => {

@@ -6,7 +6,7 @@ import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Products from "./components/products/Products";
-import Product from "./components/products/Product";
+import Product from "./components/product/Product";
 import { Provider } from "react-redux";
 import store from "./store";
 
