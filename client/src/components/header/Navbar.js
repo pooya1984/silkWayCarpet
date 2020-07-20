@@ -1,9 +1,19 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { Button, Modal } from "react-bootstrap";
 import PropTypes from "prop-types";
+import Login from "../auth/Login";
 
 const Navbar = ({ isAuthenticated, user }) => {
+  const [show, setShow] = useState(false);
+  const [showS, setShowS] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const handleCloseS = () => setShow(false);
+  const handleShowS = () => setShow(true);
+
   return (
     <Fragment>
       <nav
@@ -31,9 +41,30 @@ const Navbar = ({ isAuthenticated, user }) => {
         >
           <ul className="navbar-nav">
             <li className="nav-item m-4 ">
-              <Link className="nav-link text-light " href="#">
-                <i className="fas fa-store"></i>
-              </Link>
+              {isAuthenticated ? (
+                <Link className="nav-link text-light " to="/products">
+                  <i className="fas fa-store"></i>
+                </Link>
+              ) : (
+                <Fragment>
+                  <Link className="nav-link text-light " onClick={handleShowS}>
+                    <i className="fas fa-store"></i>
+                  </Link>
+                  <Modal show={showS} onHide={handleCloseS}>
+                    <Modal.Header closeButton>
+                      <Modal.Title>Sign In</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                      <Login />
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <Button variant="secondary" onClick={handleCloseS}>
+                        Close
+                      </Button>
+                    </Modal.Footer>
+                  </Modal>
+                </Fragment>
+              )}
             </li>
             <li className="nav-item">
               <Link className="nav-link text-light m-4 " to={"/"}>
@@ -42,7 +73,7 @@ const Navbar = ({ isAuthenticated, user }) => {
             </li>
             {isAuthenticated ? (
               <li className="nav-item">
-                <Link className="nav-link text-light m-4" href="#">
+                <Link className="nav-link text-light m-4" to="#">
                   <i className="fas fa-shopping-cart"></i>
                 </Link>
               </li>
@@ -51,9 +82,27 @@ const Navbar = ({ isAuthenticated, user }) => {
             )}
             <li className="nav-item">
               {!isAuthenticated ? (
-                <Link className="nav-link text-light m-4" to={"/"}>
-                  <small> sign In</small>
-                </Link>
+                <Fragment>
+                  <Link
+                    className="nav-link text-light m-4"
+                    onClick={handleShow}
+                  >
+                    <small> sign In</small>
+                  </Link>
+                  <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                      <Modal.Title>Sign In</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                      <Login />
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <Button variant="secondary" onClick={handleClose}>
+                        Close
+                      </Button>
+                    </Modal.Footer>
+                  </Modal>
+                </Fragment>
               ) : (
                 <Fragment>
                   <p className="nav-link text-light m-4">

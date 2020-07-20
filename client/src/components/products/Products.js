@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
 import Navbar from "../header/Navbar";
 import Footer from "../header/Footer";
@@ -6,7 +6,6 @@ import Spinner from "../layout/Spinner";
 import { connect } from "react-redux";
 import { getProducts } from "../../actions/products";
 import ProductsItem from "./ProductsItem";
-import ProductsImg from "./ProductsImg";
 
 const Products = ({ getProducts, product: { products, loading } }) => {
   useEffect(() => {
@@ -18,12 +17,6 @@ const Products = ({ getProducts, product: { products, loading } }) => {
   ) : (
     <Fragment>
       <Navbar />
-      <div className="d-flex flex-wrap">
-        <ProductsImg />
-      </div>
-
-      <h1 style={{ padding: "30px" }}>New Gallery</h1>
-
       <div className="d-flex flex-wrap">
         {products.map((product) => (
           <ProductsItem key={product._id} product={product} />
