@@ -94,12 +94,13 @@ body {
   position: relative;
   display: flex;
   width: 600px;
+  min-height: 350px;
   margin: 10px;
   padding: 10px;
 
   color: white;
 
-  background: rgb(175, 175, 175);
+  background-color: #000000;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -111,4 +112,19 @@ body {
   padding: 10px;
 
   color: black;
+}
+
+/* Crasoul */
+
+.crasoul-box {
+  position: relative;
+  width: 300px;
+  margin: 10px;
+  padding: 10px;
+
+  border-radius: 20px;
+}
+
+.crasoul-box img {
+  width: 80%;
 }

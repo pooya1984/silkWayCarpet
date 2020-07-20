@@ -1,11 +1,11 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useState, useEffect } from "react";
+import Carousel from "react-bootstrap/Carousel";
 import PropTypes from "prop-types";
 import Navbar from "../header/Navbar";
 import Footer from "../header/Footer";
 import Spinner from "../layout/Spinner";
 import { connect } from "react-redux";
 import { getProduct } from "../../actions/products";
-import ProductsImg from "../products/ProductsImg";
 
 const Products = ({ getProduct, product: { product, loading }, match }) => {
   useEffect(() => {
@@ -14,15 +14,41 @@ const Products = ({ getProduct, product: { product, loading }, match }) => {
 
   console.log(product);
 
+  const [index, setIndex] = useState(0);
+
+  const handleSelect = (selectedIndex, e) => {
+    setIndex(selectedIndex);
+  };
+
   return loading ? (
     <Spinner />
   ) : (
     <Fragment>
       <Navbar />
       <div className="item-box">
-        {/* {product.map((Img) => (
-          <ProductImg key={Img._id} Img={Img} />
-        ))} */}
+        <Carousel activeIndex={index} pause={true} onSelect={handleSelect}>
+          <Carousel.Item>
+            <img
+              className="d-block"
+              src={`${product && product.img[0]}`}
+              alt="First slide"
+            />
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block"
+              src={`${product && product.img[1]}`}
+              alt="Second slide"
+            />
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block "
+              src={`${product && product.img[2]}`}
+              alt="Third slide"
+            />
+          </Carousel.Item>
+        </Carousel>
 
         <div className="flex-column">
           <h3>{product && product.product}</h3>
@@ -42,7 +68,6 @@ const Products = ({ getProduct, product: { product, loading }, match }) => {
             <p className=" text-danger">out of stock</p>
           )}
         </div>
-        {/* <p>{collections}</p> */}
       </div>
       <Footer />
     </Fragment>

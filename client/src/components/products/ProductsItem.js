@@ -1,8 +1,7 @@
-import React from "react";
-import { connect } from "react-redux";
+import React, { useState } from "react";
+import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import ProductsImg from "./ProductsImg";
 
 const ProductsItem = ({
   product: {
@@ -19,27 +18,42 @@ const ProductsItem = ({
     quantity,
   },
 }) => {
+  const [index, setIndex] = useState(0);
+
+  const handleSelect = (selectedIndex, e) => {
+    setIndex(selectedIndex);
+  };
   return (
-    <div>
-      <div>
-        {img.map((Img) => (
-          <ProductsImg key={Img._id} Img={Img} />
-        ))}
-      </div>
+    <div class="d-flex flex-column">
       <div className="items-box">
-        <img
-          src={`${img[0]}`}
-          alt={product}
-          style={{ width: "300px", margin: "10px" }}
-        />
-        <div className="flex-column">
+        <div className="flex-column flex-wrap">
+          <div className="crasoul-box">
+            <Carousel activeIndex={index} pause={true} onSelect={handleSelect}>
+              <Carousel.Item>
+                <img className="d-block" src={`${img[0]}`} alt="First slide" />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img className="d-block" src={`${img[1]}`} alt="Second slide" />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img className="d-block " src={`${img[2]}`} alt="Third slide" />
+              </Carousel.Item>
+            </Carousel>
+          </div>
           <h3>{product}</h3>
+          <p style={{ width: "90%" }}>
+            {" "}
+            descripotion welkngvroiev ewknblnb klbbv fekpionbinr{" "}
+          </p>
+          <p>in Stock: {quantity}</p>
+        </div>
+
+        <div className="flex-column">
           <p>{collections}</p>
           <p>
             {width}x{heigh}
           </p>
           <p>{raj}</p>
-          <p>in Stock: {quantity}</p>
           <p>Year of Product: {madeYear}</p>
           {handmade === true ? <p>Handmade</p> : ""}
           <Link className="btn btn-outline-light" to={`/products/${_id}`}>
