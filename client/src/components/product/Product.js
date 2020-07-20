@@ -29,21 +29,21 @@ const Products = ({ getProduct, product: { product, loading }, match }) => {
         <Carousel activeIndex={index} pause={true} onSelect={handleSelect}>
           <Carousel.Item>
             <img
-              className="d-block"
+              className="d-block w-100"
               src={`${product && product.img[0]}`}
               alt="First slide"
             />
           </Carousel.Item>
           <Carousel.Item>
             <img
-              className="d-block"
+              className="d-block  w-100"
               src={`${product && product.img[1]}`}
               alt="Second slide"
             />
           </Carousel.Item>
           <Carousel.Item>
             <img
-              className="d-block "
+              className="d-block  w-100 "
               src={`${product && product.img[2]}`}
               alt="Third slide"
             />

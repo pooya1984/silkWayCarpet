@@ -106,11 +106,13 @@ body {
 
 .item-box {
   position: relative;
-  width: 600px;
+  max-width: 600px;
+  height: auto;
   left: 20%;
   margin: 10px;
   padding: 10px;
 
+  border-radius: 8px;
   color: black;
 }
 
