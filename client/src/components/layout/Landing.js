@@ -22,7 +22,7 @@ const Landing = () => {
           marginTop: "10px",
         }}
         className="btn btn-outline-dark"
-        to="/product"
+        to="/products"
       >
         See More
       </Link>

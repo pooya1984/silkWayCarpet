@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useReducer } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -10,6 +10,8 @@ const ProductsItem = ({
     size,
     collections,
     product,
+    description,
+    price,
     width,
     heigh,
     raj,
@@ -19,6 +21,14 @@ const ProductsItem = ({
   },
 }) => {
   const [index, setIndex] = useState(0);
+  var [quantity, dispatch] = useReducer((state, action) => {
+    if (action === "remove") {
+      return state - 1;
+    }
+    return state;
+  }, quantity);
+
+  console.log(quantity);
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
@@ -41,11 +51,9 @@ const ProductsItem = ({
             </Carousel>
           </div>
           <h3>{product}</h3>
-          <p style={{ width: "90%" }}>
-            {" "}
-            descripotion welkngvroiev ewknblnb klbbv fekpionbinr{" "}
-          </p>
+          <p style={{ width: "70%" }}>{description}</p>
           <p>in Stock: {quantity}</p>
+          <p>{price}€</p>
         </div>
 
         <div className="flex-column">
@@ -61,7 +69,12 @@ const ProductsItem = ({
           </Link>
           {quantity >= 1 ? (
             <div>
-              <button className="btn btn-outline-success">Add to Basket</button>
+              <button
+                className="btn btn-outline-success"
+                onClick={() => dispatch("remove")}
+              >
+                Add to Basket
+              </button>
             </div>
           ) : (
             <p className=" text-danger">out of stock</p>

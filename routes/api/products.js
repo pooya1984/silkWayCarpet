@@ -23,11 +23,13 @@ router.post(
 
       const newProducts = new Products({
         product: req.body.product,
+        description: req.body.description,
         size: req.body.size,
         width: req.body.width,
         heigh: req.body.heigh,
         raj: req.body.raj,
         quantity: req.body.quantity,
+        price: req.body.price,
         collections: req.body.collections,
         madeYear: req.body.madeYear,
         handmade: req.body.handmade,

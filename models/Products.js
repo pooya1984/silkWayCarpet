@@ -9,6 +9,9 @@ const ProductsSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  description: {
+    type: String,
+  },
   size: {
     type: String,
   },
@@ -28,6 +31,9 @@ const ProductsSchema = new mongoose.Schema({
     type: Boolean,
   },
   quantity: {
+    type: Number,
+  },
+  price: {
     type: Number,
   },
   collections: [{ type: String }],

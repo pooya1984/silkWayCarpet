@@ -20,7 +20,7 @@ const Navbar = ({ isAuthenticated, user }) => {
         class="navbar navbar-expand-md  navbar-dark"
         style={{ backgroundColor: "black" }}
       >
-        <Link class="navbar-brand m-2" href="#">
+        <Link class="navbar-brand m-2" href="/">
           <p className="h1">SILK WAY CARPET</p>
           <p className="h4 text-secondary">Online Store</p>
         </Link>
@@ -73,7 +73,7 @@ const Navbar = ({ isAuthenticated, user }) => {
             </li>
             {isAuthenticated ? (
               <li className="nav-item">
-                <Link className="nav-link text-light m-4" to="#">
+                <Link className="nav-link text-light m-4" to="basket">
                   <i className="fas fa-shopping-cart"></i>
                 </Link>
               </li>
